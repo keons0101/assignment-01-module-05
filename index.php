@@ -2,66 +2,66 @@
 
 $books = [
     [
-        'name' => 'Joyland',
+        'title' => 'Joyland',
         'author' => 'Stephen King',
         'price' => 20.99,
         'year' => 2013,
-        'category' => 'Mistery'
+        'genre' => 'Mystery'
     ],
     [
-        'name' => 'The Chain',
+        'title' => 'The Chain',
         'author' => 'Adrian McKinty',
         'price' => 18.75,
         'year' => 2019,
-        'category' => 'Thriller'
+        'genre' => 'Thriller'
     ],
     [
-        'name' => 'Gone Girl',
+        'title' => 'Gone Girl',
         'author' => 'Gillian Flynn',
         'price' => 16.50,
         'year' => 2012,
-        'category' => 'Mistery'
+        'genre' => 'Mystery'
     ],
     [
-        'name' => 'The Silent Patient',
+        'title' => 'The Silent Patient',
         'author' => 'Alex Michaelides',
         'price' => 19.40,
         'year' => 2019,
-        'category' => 'Thriller'
+        'genre' => 'Thriller'
     ],
     [
-        'name' => 'Dune',
+        'title' => 'Dune',
         'author' => 'Frank Herbert',
         'price' => 24.99,
         'year' => 1965,
-        'category' => 'Science Fiction'
+        'genre' => 'Science Fiction'
     ],
     [
-        'name' => 'Neuromancer',
+        'title' => 'Neuromancer',
         'author' => 'William Gibson',
         'price' => 17.30,
         'year' => 1984,
-        'category' => 'Science Fiction'
+        'genre' => 'Science Fiction'
     ],
     [
-        'name' => 'The Girl with the Dragon Tattoo',
+        'title' => 'The Girl with the Dragon Tattoo',
         'author' => 'Stieg Larsson',
         'price' => 21.10,
         'year' => 2005,
-        'category' => 'Mistery'
+        'genre' => 'Mystery'
     ],
     [
-        'name' => 'The Da Vinci Code',
+        'title' => 'The Da Vinci Code',
         'author' => 'Dan Brown',
         'price' => 15.99,
         'year' => 2003,
-        'category' => 'Thriller'
+        'genre' => 'Thriller'
     ],
     [
-        'name' => 'Foundation',
+        'title' => 'Foundation',
         'author' => 'Isaac Asimov',
         'price' => 22.80,
         'year' => 1951,
-        'category' => 'Science Fiction'
+        'genre' => 'Science Fiction'
     ],
 ];
