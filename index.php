@@ -69,3 +69,6 @@ $books = [
         'genre' => 'Science Fiction'
     ],
 ];
+
+applyDiscounts($books);
+$total = calculateTotal($books);
