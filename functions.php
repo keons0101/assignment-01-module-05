@@ -21,7 +21,13 @@ function applyDiscounts(array &$books)
 
 function calculateTotal(array $books)
 {
-    
+    $total = 0.0;
+
+    foreach ($books as $book) {
+        $total += $book['price'];
+    }
+
+    return $total;
 }
 
 function sanitize($value)
