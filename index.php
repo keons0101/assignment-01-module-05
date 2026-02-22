@@ -72,3 +72,47 @@ $books = [
 
 applyDiscounts($books);
 $total = calculateTotal($books);
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store</title>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to Book Store</h1>
+        <h2>Take a look and choose your next adventure!</h2>
+    </header>
+    <main>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Year</th>
+                <th>Genre</th>
+                <th>Price</th>
+            </tr>
+
+            // Source - https://stackoverflow.com/a/16046932
+            // Posted by Kamil Szot, modified by community. See post 'Timeline' for change history
+            // Retrieved 2026-02-21, License - CC BY-SA 3.0
+            <?php foreach ($books as $book): ?>
+                <tr>
+                    <td><?= $book['title']; ?></td>
+                    <td><?= $book['author']; ?></td>
+                    <td><?= $book['year']; ?></td>
+                    <td><?= $book['genre']; ?></td>
+                    <td><?= $book['price']; ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </main>
+</body>
+
+</html>
