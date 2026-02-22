@@ -70,6 +70,23 @@ $books = [
     ],
 ];
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $title = sanitize($_POST['title'] ?? '');
+    $author = sanitize($_POST['author'] ?? '');
+    $price = sanitize($_POST['price'] ?? '');
+    $year = sanitize($_POST['year'] ?? '');
+    $genre = sanitize($_POST['genre'] ?? '');
+
+    $books[] = [
+        'title' => $title,
+        'author' => $author,
+        'price' => $price,
+        'year' => $year,
+        'genre' => $genre
+    ];
+    //echo $title . " " . $author . " " . $genre . " " . $price;
+}
+
 applyDiscounts($books);
 $total = calculateTotal($books);
 
@@ -91,6 +108,7 @@ $total = calculateTotal($books);
     </header>
     <main>
         <table>
+            <!-- Columns titles -->
             <tr>
                 <th>Title</th>
                 <th>Author</th>
@@ -99,10 +117,11 @@ $total = calculateTotal($books);
                 <th>Price</th>
             </tr>
 
-            // Source - https://stackoverflow.com/a/16046932
-            // Posted by Kamil Szot, modified by community. See post 'Timeline' for change history
-            // Retrieved 2026-02-21, License - CC BY-SA 3.0
+            <!-- Source - https://stackoverflow.com/a/16046932
+            Posted by Kamil Szot, modified by community. See post 'Timeline' for change history
+            Retrieved 2026-02-21, License - CC BY-SA 3.0 -->
             <?php foreach ($books as $book): ?>
+                <!-- Display info of every book -->
                 <tr>
                     <td><?= $book['title']; ?></td>
                     <td><?= $book['author']; ?></td>
@@ -112,6 +131,7 @@ $total = calculateTotal($books);
                 </tr>
             <?php endforeach; ?>
         </table>
+        <h2>Total: $<?= $total ?></h2>
     </main>
 </body>
 
