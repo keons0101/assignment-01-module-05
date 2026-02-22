@@ -1,5 +1,9 @@
 <?php
 
+// Import from functions.php
+require_once('./functions.php');
+
+// Books inventory
 $books = [
     [
         'title' => 'Joyland',
