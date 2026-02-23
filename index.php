@@ -72,6 +72,8 @@ $books = [
 
 $errors = [];
 $message = '';
+$log_message = "";
+$logFilePath = './bookstore_log.txt';
 
 // Handle POST requests
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -80,8 +82,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $price = sanitize($_POST['price'] ?? '');
     $year = sanitize($_POST['year'] ?? '');
     $genre = sanitize($_POST['genre'] ?? '');
-
-    $year = (int) $year;
 
     // Check data format
     if ($title === '' || $author === '' || $genre === '' || $price === '' || $year === '') {
@@ -117,15 +117,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         applyDiscounts($books);
         $message = 'Book added successfully';
         //echo $title . " " . $author . " " . $genre . " " . $price;
+
+        $log_message = "[" . date("Y-m-d H:i:s") . "] IP: " . $_SERVER['REMOTE_ADDR'] . " | " . $_SERVER['HTTP_USER_AGENT'] . " | " . "Added book: " . '"' . $title . '"' . " (" . $genre . ", " . "$" . $price . ")" . PHP_EOL;
+
+        file_put_contents($logFilePath, $log_message, FILE_APPEND | LOCK_EX);
+
+        //echo $log_message;
     }
 }
 
-
-
 applyDiscounts($books);
 $total = calculateTotal($books);
-
 ?>
+
 <!-- HTML Structure Section -->
 <!DOCTYPE html>
 <html lang="en">
