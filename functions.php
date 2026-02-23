@@ -16,7 +16,7 @@ function applyDiscounts(array &$books)
         } else {
             $book['price'] = $book['original_price'];
         }
-    }
+    } unset($book);
 }
 
 function calculateTotal(array $books)
@@ -32,5 +32,5 @@ function calculateTotal(array $books)
 
 function sanitize($value)
 {
-    return trim($value);
+    return strip_tags(trim($value));
 }

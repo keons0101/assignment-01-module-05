@@ -70,6 +70,7 @@ $books = [
     ],
 ];
 
+$errors = [];
 $message = '';
 
 // Handle POST requests
@@ -80,17 +81,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $year = sanitize($_POST['year'] ?? '');
     $genre = sanitize($_POST['genre'] ?? '');
 
-    $price = (float) $price;
     $year = (int) $year;
 
     // Check data format
-    if ($title === '' || $author === '' || $genre === '') {
-        $message = 'Empty inputs!';
-    } elseif ($price === '' || !is_numeric($price) || $price <= 0) {
-        $message = 'Price must be a number!';
-    } elseif ($year === '' || !is_numeric($year) || $year <= 0) {
-        $message = 'Year is not valid';
-    } else {
+    if ($title === '' || $author === '' || $genre === '' || $price === '' || $year === '') {
+        $errors[] = 'All fields are required!';
+    }
+
+    if ($price !== '' && !is_numeric($price)) {
+        $errors[] = 'Price must be a valid number!';
+    } elseif ($price !== '') {
+        $price = (float) $price;
+
+        if ($price <= 0) {
+            $errors[] = "Price must be more than 0!";
+        }
+    }
+
+    if ($year !== '') {
+        $year = (int) $year;
+
+        if ($year < 1000 || $year > 2099) {
+            $errors[] = "Year must be between 1000 and 2099!";
+        }
+    }
+
+    if (empty($errors)) {
         $books[] = [
             'title' => $title,
             'author' => $author,
@@ -98,11 +114,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'year' => $year,
             'genre' => $genre
         ];
+        applyDiscounts($books);
         $message = 'Book added successfully';
         //echo $title . " " . $author . " " . $genre . " " . $price;
     }
-
 }
+
+
 
 applyDiscounts($books);
 $total = calculateTotal($books);
@@ -142,15 +160,15 @@ $total = calculateTotal($books);
                 <?php foreach ($books as $book): ?>
                     <!-- Display info of every book -->
                     <tr>
-                        <td><?= $book['title']; ?></td>
-                        <td><?= $book['author']; ?></td>
+                        <td><?= htmlspecialchars($book['title']); ?></td>
+                        <td><?= htmlspecialchars($book['author']); ?></td>
                         <td><?= $book['year']; ?></td>
-                        <td><?= $book['genre']; ?></td>
-                        <td><?= $book['price']; ?></td>
+                        <td><?= htmlspecialchars($book['genre']); ?></td>
+                        <td><?= number_format($book['price'], 2); ?></td>
                     </tr>
                 <?php endforeach; ?>
             </table>
-            <h2>Total: $<?= $total ?></h2>
+            <h2>Total: $<?= number_format($total, 2)  ?></h2>
             <h2><?= $message ?></h2>
         </div>
 
