@@ -70,6 +70,8 @@ $books = [
     ],
 ];
 
+$message = '';
+
 // Handle POST requests
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = sanitize($_POST['title'] ?? '');
@@ -78,14 +80,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $year = sanitize($_POST['year'] ?? '');
     $genre = sanitize($_POST['genre'] ?? '');
 
-    $books[] = [
-        'title' => $title,
-        'author' => $author,
-        'price' => $price,
-        'year' => $year,
-        'genre' => $genre
-    ];
-    //echo $title . " " . $author . " " . $genre . " " . $price;
+    // Check data format
+    if ($title === '' || $author === '' || $genre === '') {
+        $message = 'Empty inputs!';
+    } elseif ($price === '' || !is_numeric($price)) {
+        $message = 'Price must be a number!';
+    } elseif ($year <= 0 || !is_numeric($year)) {
+        $message = 'Year is not valid';
+    } else {
+        $books[] = [
+            'title' => $title,
+            'author' => $author,
+            'price' => $price,
+            'year' => $year,
+            'genre' => $genre
+        ];
+        //echo $title . " " . $author . " " . $genre . " " . $price;
+    }
+
 }
 
 applyDiscounts($books);
@@ -101,6 +113,35 @@ $total = calculateTotal($books);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./main.css">
     <title>Book Store</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            padding-inline: .75rem;
+            padding-block: 1rem;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            text-align: left;
+        }
+
+        table {
+            width: 70%;
+        }
+
+        th,
+        td {
+            padding-inline: 4px;
+            padding-block: 6px;
+        }
+    </style>
 </head>
 
 <body>
@@ -134,6 +175,7 @@ $total = calculateTotal($books);
             <?php endforeach; ?>
         </table>
         <h2>Total: $<?= $total ?></h2>
+        <h2><?= $message ?></h2>
     </main>
 </body>
 
