@@ -1,7 +1,7 @@
 <?php
 
-// Import from functions.php
-require_once('./functions.php');
+require_once('./functions.php'); // Import from functions.php
+date_default_timezone_set('America/Vancouver'); // Set Vancouver timezone by default
 
 // Books inventory
 $books = [
