@@ -168,11 +168,27 @@ $total = calculateTotal($books);
                         <td><?= htmlspecialchars($book['author']); ?></td>
                         <td><?= $book['year']; ?></td>
                         <td><?= htmlspecialchars($book['genre']); ?></td>
-                        <td><?= number_format($book['price'], 2); ?></td>
+                        <td class="price">
+                            <?php
+                            $final = (float) $book['price'];
+                            $hasDiscount = false;
+                            if(isset($book['original_price']) && (float) $book['original_price'] > $final) {
+                                $hasDiscount = true;
+                            };
+
+                            if ($hasDiscount) {
+                                $original = (float) $book['original_price'];
+                                echo '<span class="price-final">$' . number_format($final, 2) . '</span> ';
+                                echo '<span class="price-original">$' . number_format($original, 2) . '</span>';
+                            } else {
+                                echo '<span class="price-final">$' . number_format($final, 2) . '</span>';
+                            }
+                            ?>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </table>
-            <h2>Total: $<?= number_format($total, 2)  ?></h2>
+            <h2>Total: $<?= number_format($total, 2) ?></h2>
             <h2><?= $message ?></h2>
         </div>
 
