@@ -118,8 +118,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $message = 'Book added successfully';
         //echo $title . " " . $author . " " . $genre . " " . $price;
 
-        $log_message = "[" . date("Y-m-d H:i:s") . "] IP: " . $_SERVER['REMOTE_ADDR'] . " | " . $_SERVER['HTTP_USER_AGENT'] . " | " . "Added book: " . '"' . $title . '"' . " (" . $genre . ", " . "$" . $price . ")" . PHP_EOL;
+        // After adding the book, log it in txt file
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $userAgent = $_SERVER['HTTP_USER_AGENT'];
+        $date = date("Y-m-d H:i:s");
 
+        $log_message = "[" . $date . "] IP: " . $ip . " | " . $userAgent . " | " . "Added book: " . '"' . $title . '"' . " (" . $genre . ", " . "$" . $price . ")" . PHP_EOL;
         file_put_contents($logFilePath, $log_message, FILE_APPEND | LOCK_EX);
 
         //echo $log_message;
@@ -172,9 +176,10 @@ $total = calculateTotal($books);
                             <?php
                             $final = (float) $book['price'];
                             $hasDiscount = false;
-                            if(isset($book['original_price']) && (float) $book['original_price'] > $final) {
+                            if (isset($book['original_price']) && (float) $book['original_price'] > $final) {
                                 $hasDiscount = true;
-                            };
+                            }
+                            ;
 
                             if ($hasDiscount) {
                                 $original = (float) $book['original_price'];
@@ -189,55 +194,63 @@ $total = calculateTotal($books);
                 <?php endforeach; ?>
             </table>
             <h2>Total: $<?= number_format($total, 2) ?></h2>
-            <h2><?= $message ?></h2>
+            <h6 class="message"><?= $message ?></h6>
         </div>
 
-        <!-- Form to add new books -->
-        <form action="" method="POST" class="book-form">
-            <fieldset>
-                <legend>Add New Book</legend>
+        <div class="right-section">
+            <!-- Form to add new books -->
+            <form action="" method="POST" class="book-form">
+                <fieldset>
+                    <legend>Add New Book</legend>
 
-                <div class="field field__title">
-                    <label for="title">Title</label>
-                    <input type="text" id="title" name="title" required minlength="1" maxlength="120"
-                        placeholder="Book title" />
-                </div>
+                    <div class="field field__title">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" name="title" required minlength="1" maxlength="120"
+                            placeholder="Book title" />
+                    </div>
 
-                <div class="field field__author">
-                    <label for="author">Author</label>
-                    <input type="text" id="author" name="author" required minlength="2" maxlength="100"
-                        placeholder="Author name" />
-                </div>
+                    <div class="field field__author">
+                        <label for="author">Author</label>
+                        <input type="text" id="author" name="author" required minlength="2" maxlength="100"
+                            placeholder="Author name" />
+                    </div>
 
-                <div class="field field__year">
-                    <label for="year">Year</label>
-                    <input type="number" id="year" name="year" required min="1000" max="2099" step="1"
-                        placeholder="e.g. 2020" />
-                </div>
+                    <div class="field field__year">
+                        <label for="year">Year</label>
+                        <input type="number" id="year" name="year" required min="1000" max="2099" step="1"
+                            placeholder="e.g. 2020" />
+                    </div>
 
-                <div class="field field__price">
-                    <label for="price">Price</label>
-                    <input type="number" id="price" name="price" required min="0" step="0.01" placeholder="0.00" />
-                </div>
+                    <div class="field field__price">
+                        <label for="price">Price</label>
+                        <input type="number" id="price" name="price" required min="0" step="0.01" placeholder="0.00" />
+                    </div>
 
-                <div class="field field__genre">
-                    <label for="genre">Genre</label>
-                    <select id="genre" name="genre" required>
-                        <option value="" selected disabled>Select a genre</option>
-                        <option value="Science Fiction">Science Fiction</option>
-                        <option value="Thriller">Thriller</option>
-                        <option value="Mystery">Mystery</option>
-                        <option value="Fantasy">Fantasy</option>
-                        <option value="Romance">Romance</option>
-                        <option value="Comedy">Comedy</option>
-                        <option value="Drama">Drama</option>
-                        <option value="Non-Fiction">Non-Fiction</option>
-                    </select>
-                </div>
+                    <div class="field field__genre">
+                        <label for="genre">Genre</label>
+                        <select id="genre" name="genre" required>
+                            <option value="" selected disabled>Select a genre</option>
+                            <option value="Science Fiction">Science Fiction</option>
+                            <option value="Thriller">Thriller</option>
+                            <option value="Mystery">Mystery</option>
+                            <option value="Fantasy">Fantasy</option>
+                            <option value="Romance">Romance</option>
+                            <option value="Comedy">Comedy</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Non-Fiction">Non-Fiction</option>
+                        </select>
+                    </div>
 
-                <button type="submit">Add Book</button>
-            </fieldset>
-        </form>
+                    <button type="submit">Add Book</button>
+                </fieldset>
+            </form>
+
+            <section class="server_info">
+                <p>Date: <?php if(isset($date)) echo $date ?> </p>
+                <p>IP: <?php if(isset($ip)) echo $ip ?> </p>
+                <p>User Agent: <?php if(isset($ip)) echo $userAgent ?> </p>
+            </section>
+        </div>
     </main>
 </body>
 

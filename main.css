@@ -34,6 +34,13 @@ main {
     gap: 1rem;
 }
 
+.right-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
 .book-form {
     max-width: 520px;
     width: 100%;
@@ -100,6 +107,11 @@ main {
     cursor: pointer;
 }
 
+.server_info {
+    color: #8c8c8c;
+    font-size: .625rem;
+}
+
 /* Chrome, Edge, Safari */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
@@ -116,6 +128,10 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .price-final {
     font-weight: 600;
+}
+
+.message {
+    color: green;
 }
 
 /* Firefox */

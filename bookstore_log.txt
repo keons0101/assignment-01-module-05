@@ -1,2 +1,6 @@
 [2026-02-23 07:55:30] IP: 127.0.0.1 | Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 | Added book: "I'm testing right now" (Mystery, $10.99)
 [2026-02-23 00:00:49] IP: 127.0.0.1 | Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 | Added book: "I'm testing the timezone" (Thriller, $40.5)
+[2026-02-23 12:15:40] IP: 127.0.0.1 | Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 | Added book: "Nemo" (Comedy, $10)
+[2026-02-23 12:20:58] IP: 127.0.0.1 | Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 | Added book: "More testing" (Science Fiction, $100)
+[2026-02-23 12:22:56] IP: 127.0.0.1 | Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 | Added book: "aaaaaaaaaa" (Comedy, $20)
+[2026-02-23 12:26:05] IP: 127.0.0.1 | Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 | Added book: "EEEEE" (Comedy, $30)
