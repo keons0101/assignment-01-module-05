@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding-inline: .75rem;
+    padding-block: 1rem;
+}
+
+table, th, td {
+    border:1px solid black;
+    text-align: left;
+}
+
+table {
+    width: 70%;
+}
+
+th, td {
+    padding-inline: 4px;
+    padding-block: 6px;
+}

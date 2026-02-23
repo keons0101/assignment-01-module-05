@@ -70,6 +70,7 @@ $books = [
     ],
 ];
 
+// Handle POST requests
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = sanitize($_POST['title'] ?? '');
     $author = sanitize($_POST['author'] ?? '');
@@ -91,13 +92,14 @@ applyDiscounts($books);
 $total = calculateTotal($books);
 
 ?>
-
+<!-- HTML Structure Section -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./main.css">
     <title>Book Store</title>
 </head>
 
