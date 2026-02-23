@@ -5,20 +5,108 @@
 }
 
 body {
-    padding-inline: .75rem;
+    padding-inline: 0.75rem;
     padding-block: 1rem;
 }
 
-table, th, td {
-    border:1px solid black;
+table,
+th,
+td {
+    border: 1px solid black;
     text-align: left;
 }
 
 table {
-    width: 70%;
+    width: 100%;
 }
 
-th, td {
+th,
+td {
     padding-inline: 4px;
     padding-block: 6px;
+}
+
+main {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    gap: 1rem;
+}
+
+.book-form {
+    max-width: 520px;
+    width: 100%;
+}
+
+.book-form fieldset {
+    border: 1px solid #ccc;
+    padding: 16px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "title  title"
+        "author author"
+        "genre  genre"
+        "year   price"
+        "submit submit";
+    gap: 0.5rem 0.75rem;
+}
+
+/* Grid areas */
+.field__title {
+    grid-area: title;
+}
+
+.field__author {
+    grid-area: author;
+}
+
+.field__genre {
+    grid-area: genre;
+}
+
+.field__year {
+    grid-area: year;
+}
+
+.field__price {
+    grid-area: price;
+}
+
+.book-form button[type="submit"] {
+    grid-area: submit;
+}
+
+/* Field layout */
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Inputs */
+.book-form input,
+.book-form select {
+    padding: 10px;
+    font: inherit;
+}
+
+/* Button */
+.book-form button {
+    padding: 10px 14px;
+    font: inherit;
+    cursor: pointer;
+}
+
+/* Chrome, Edge, Safari */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
 }

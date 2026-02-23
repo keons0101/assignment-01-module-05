@@ -117,35 +117,6 @@ $total = calculateTotal($books);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./main.css">
     <title>Book Store</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            padding-inline: .75rem;
-            padding-block: 1rem;
-        }
-
-        table,
-        th,
-        td {
-            border: 1px solid black;
-            text-align: left;
-        }
-
-        table {
-            width: 70%;
-        }
-
-        th,
-        td {
-            padding-inline: 4px;
-            padding-block: 6px;
-        }
-    </style>
 </head>
 
 <body>
@@ -182,6 +153,53 @@ $total = calculateTotal($books);
             <h2>Total: $<?= $total ?></h2>
             <h2><?= $message ?></h2>
         </div>
+
+        <!-- Form to add new books -->
+        <form action="" method="POST" class="book-form">
+            <fieldset>
+                <legend>Add New Book</legend>
+
+                <div class="field field__title">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" required minlength="1" maxlength="120"
+                        placeholder="Book title" />
+                </div>
+
+                <div class="field field__author">
+                    <label for="author">Author</label>
+                    <input type="text" id="author" name="author" required minlength="2" maxlength="100"
+                        placeholder="Author name" />
+                </div>
+
+                <div class="field field__year">
+                    <label for="year">Year</label>
+                    <input type="number" id="year" name="year" required min="1000" max="2099" step="1"
+                        placeholder="e.g. 2020" />
+                </div>
+
+                <div class="field field__price">
+                    <label for="price">Price</label>
+                    <input type="number" id="price" name="price" required min="0" step="0.01" placeholder="0.00" />
+                </div>
+
+                <div class="field field__genre">
+                    <label for="genre">Genre</label>
+                    <select id="genre" name="genre" required>
+                        <option value="" selected disabled>Select a genre</option>
+                        <option value="Science Fiction">Science Fiction</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="Mystery">Mystery</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Non-Fiction">Non-Fiction</option>
+                    </select>
+                </div>
+
+                <button type="submit">Add Book</button>
+            </fieldset>
+        </form>
     </main>
 </body>
 
