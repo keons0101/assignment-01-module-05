@@ -10,11 +10,18 @@ function applyDiscounts(array &$books)
             $book['original_price'] = $book['price'];
         }
 
-        // Discount 10% if it's Science Fiction
-        if ($book['genre'] === 'Science Fiction') {
-            $book['price'] = $book['original_price'] * 0.9;
-        } else {
-            $book['price'] = $book['original_price'];
+        // Discount logic
+        switch($book['genre']){
+            case 'Science Fiction':
+                $book['price'] = $book['original_price'] * 0.9; // 10% if it's Science Fiction
+                break;
+            
+            case 'Fantasy':
+                $book['price'] = $book['original_price'] * 0.95; // 5% if it's Fantasy
+                break;
+
+            default:
+                $book['price'] = $book['original_price'];
         }
     } unset($book);
 }

@@ -20,11 +20,11 @@ $books = [
         'genre' => 'Thriller'
     ],
     [
-        'title' => 'Gone Girl',
-        'author' => 'Gillian Flynn',
+        'title' => 'The Hobbit',
+        'author' => 'John Reuel',
         'price' => 16.50,
-        'year' => 2012,
-        'genre' => 'Mystery'
+        'year' => 1937,
+        'genre' => 'Fantasy'
     ],
     [
         'title' => 'The Silent Patient',
@@ -105,7 +105,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors[] = "Year must be between 1000 and 2099!";
         }
     }
-
+    // ------------------------------------------------------------------
+    
     if (empty($errors)) {
         $books[] = [
             'title' => $title,
@@ -128,6 +129,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         //echo $log_message;
     }
+} else {
+    http_response_code(400);
+    $message = 'Not a valid request';
 }
 
 applyDiscounts($books);
