@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
     // ------------------------------------------------------------------
-    
+
     if (empty($errors)) {
         $books[] = [
             'title' => $title,
@@ -129,9 +129,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         //echo $log_message;
     }
-} else {
-    http_response_code(400);
-    $message = 'Not a valid request';
 }
 
 applyDiscounts($books);
@@ -199,6 +196,14 @@ $total = calculateTotal($books);
             </table>
             <h2>Total: $<?= number_format($total, 2) ?></h2>
             <h6 class="message"><?= $message ?></h6>
+            <br>
+            <h3>Logs</h3>
+            <p>
+                <?php 
+                    $file = file_get_contents('./bookstore_log.txt', true);
+                    echo nl2br(htmlspecialchars($file));
+                ?>
+            </p>
         </div>
 
         <div class="right-section">
