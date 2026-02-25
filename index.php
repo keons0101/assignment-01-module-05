@@ -124,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $userAgent = $_SERVER['HTTP_USER_AGENT'];
         $date = date("Y-m-d H:i:s");
 
-        $log_message = "[" . $date . "] IP: " . $ip . " | " . $userAgent . " | " . "Added book: " . '"' . $title . '"' . " (" . $genre . ", " . "$" . $price . ")" . PHP_EOL;
+        $log_message = "[" . $date . "] IP: " . $ip . " | " . "User Agent: " . $userAgent . " | " . "Added book: " . '"' . $title . '"' . " (" . $genre . ", " . "$" . $price . ")" . PHP_EOL;
         file_put_contents($logFilePath, $log_message, FILE_APPEND | LOCK_EX);
 
         //echo $log_message;
@@ -149,7 +149,8 @@ $total = calculateTotal($books);
 <body>
     <header>
         <h1>Welcome to Book Store</h1>
-        <h2>Take a look and choose your next adventure!</h2>
+        <h4>10% discount for Science Fiction books!</h4>
+        <h4>5% discount for Fantasy books!</h4>
     </header>
     <main>
         <div>
@@ -255,9 +256,9 @@ $total = calculateTotal($books);
             </form>
 
             <section class="server_info">
-                <p>Date: <?php if(isset($date)) echo $date ?> </p>
-                <p>IP: <?php if(isset($ip)) echo $ip ?> </p>
-                <p>User Agent: <?php if(isset($ip)) echo $userAgent ?> </p>
+                <p>Date: <?php echo date("Y-m-d H:i:s") ?> </p>
+                <p>IP: <?php echo $_SERVER['REMOTE_ADDR'] ?> </p>
+                <p>User Agent: <?php echo $_SERVER['HTTP_USER_AGENT'] ?> </p>
             </section>
         </div>
     </main>

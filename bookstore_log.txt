@@ -4,3 +4,4 @@
 [2026-02-23 12:20:58] IP: 127.0.0.1 | Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 | Added book: "More testing" (Science Fiction, $100)
 [2026-02-23 12:22:56] IP: 127.0.0.1 | Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 | Added book: "aaaaaaaaaa" (Comedy, $20)
 [2026-02-23 12:26:05] IP: 127.0.0.1 | Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 | Added book: "EEEEE" (Comedy, $30)
+[2026-02-25 11:07:57] IP: 127.0.0.1 | Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 | Added book: "Aaaa" (Fantasy, $10)
